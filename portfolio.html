@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assey | Portfolio</title>
+
+  <!-- Font Awesome for skill icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">Assey<span>.</span></div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="dark-mode-toggle" class="btn">🌙 Dark Mode</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+  <div class="hero-content">
+    <h1>Hi, I'm <span>John Cassey D. Calagui</span></h1>
+    <p>I am a <span id="typed-text"></span></p>
+    <a href="#projects" class="btn">Explore My Work</a>
+  </div>
+</section>
+
+
+  <!-- About -->
+  <section id="about" class="section about">
+    <div class="about-container">
+      <div class="profile-pic">
+        <img src="cassey.jpg" alt="John Cassey D. Calagui">
+      </div>
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          I'm <strong>John Cassey D. Calagui</strong>, a first-year BSIT student passionate about technology, design, and continuous learning. 
+          I love building creative projects and improving my skills in web development.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section skills">
+    <h2>Skills</h2>
+    <div class="skills-bars">
+
+      <div class="skill-bar">
+        <p><i class="fab fa-html5"></i> HTML</p>
+        <div class="bar">
+          <div class="progress" data-width="85%">0%</div>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <p><i class="fab fa-css3-alt"></i> CSS</p>
+        <div class="bar">
+          <div class="progress" data-width="60%">0%</div>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <p><i class="fab fa-js-square"></i> JavaScript</p>
+        <div class="bar">
+          <div class="progress" data-width="45%">0%</div>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <p><i class="fab fa-python"></i> Python</p>
+        <div class="bar">
+          <div class="progress" data-width="95%">0%</div>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <p><i class="fab fa-github"></i> Git & GitHub</p>
+        <div class="bar">
+          <div class="progress" data-width="75%">0%</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A sleek personal site to showcase my skills and work.</p>
+      </div>
+      <div class="project-card">
+        <h3>Task Tracker</h3>
+        <p>Organize and track daily goals with a smooth UI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact">
+    <h2>Contact Me</h2>
+    <p>Let’s work together! Feel free to reach out via email or socials below.</p>
+    <div class="contact-links">
+      <a href="https://mail.google.com/mail/?view=cm&to=asseyvenom10@gmail.com" target="_blank" rel="noopener noreferrer" class="btn">Email</a>
+      <a href="https://www.facebook.com/assey10/" target="_blank" rel="noopener noreferrer" class="btn">Facebook</a>
+      <a href="https://github.com/Cassey10gwapo/asseycode.github" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
+      <a href="resume.pdf.pdf" target="_blank" download class="btn">Download Resume</a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 John Cassey D. Calagui</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    // Fade-in sections on scroll
+    window.addEventListener("scroll", () => {
+      document.querySelectorAll(".section").forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          sec.style.opacity = "1";
+          sec.style.transform = "translateY(0)";
+        }
+      });
+
+      // Animate skill bars
+      document.querySelectorAll(".progress").forEach(bar => {
+        const top = bar.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100 && !bar.classList.contains("animated")) {
+          bar.classList.add("animated");
+          let width = 0;
+          const target = parseInt(bar.dataset.width);
+          const interval = setInterval(() => {
+            if(width >= target) clearInterval(interval);
+            else {
+              width++;
+              bar.style.width = width + "%";
+              bar.textContent = width + "%";
+            }
+          }, 15);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
